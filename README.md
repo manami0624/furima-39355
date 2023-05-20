@@ -1,24 +1,72 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column             | Type   | Options     |
+| ------------------ | ------ | ----------- |
+| nickname           | string | null: false |
+| email              | string | null: false |
+| encrypted_password | string | null: false |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :items
+- has_many :comments
 
-* Configuration
 
-* Database creation
+## items テーブル
 
-* Database initialization
+| Column        | Type   | Options     |
+| --------------| ------ | ----------- |
+| user_id       | string | null: false |
+| item_name     | string | null: false |
+| image         |        | null: false |
+| price         | string | null: false |
+| condition     | string | null: false |
+| shipping_cost	| string | null: false |
+| prefecture    | string | null: false |
+| shipping_days	| string | null: false |
+| category_id   | string | null: false |
+| brand_id      | string | null: false |
 
-* How to run the test suite
+### Association
 
-* Services (job queues, cache servers, search engines, etc.)
+- belongs_to :user
+- has_many :comments
+- has_one :category
+- has_one :brand
 
-* Deployment instructions
+## category テーブル
 
-* ...
+| Column   | Type       | Options                        |
+| -------- | ---------- | ------------------------------ |
+| item_id  | references | null: false, foreign_key: true |
+
+### Association
+
+- has_many :items
+
+
+## brand テーブル
+
+| Column   | Type       | Options                        |
+| ---------| ---------- | ------------------------------ |
+| item_id  | references | null: false, foreign_key: true |
+
+### Association
+
+- has_many :items
+
+
+## comments テーブル
+
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| item_id | string     |                                |
+| user_id | references | null: false, foreign_key: true |
+| item    | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :item
+- belongs_to :user
