@@ -14,10 +14,9 @@
 | birthday           | date    | null: false              |
 
 ### Association
-
 - has_many :items
-- has_many :comments
 - has_many :orders
+
 
 
 ## items テーブル
@@ -35,30 +34,9 @@
 | price            | integer    | null: false                    |
 
 ### Association
-
 - belongs_to :user
-- has_many   :comments
 - has_one    :order
 
-
-
-### Association
-
-- has_many :items
-
-
-## comments テーブル
-
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| item    | references | null: false, foreign_key: true |
-| user    | references | null: false, foreign_key: true |
-| comment | text       |                                |
-
-### Association
-
-- belongs_to :item
-- belongs_to :user
 
 
 ## shopping_addresses テーブル(配送先住所を保存するテーブル)
@@ -74,8 +52,8 @@
 | order         | references | null: false, foreign_key: true |
 
 ### Association
-
 - belongs_to :order
+
 
 
 ## orders テーブル(購入記録を登録するテーブル)
@@ -86,7 +64,4 @@
 | item    | references | null: false, foreign_key: true |
 
 ### Association
-
-- belongs_to :item
-- belongs_to :user
 - belongs_to :shopping_addresses
