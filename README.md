@@ -9,8 +9,8 @@
 | encrypted_password | string  | null: false              |
 | first_name         | string  | null: false              |
 | last_name          | string  | null: false              |
-| first_name_kana    | string  | null: false              |
-| last_name_kana     | string  | null: false              |
+| first_name_read    | string  | null: false              |
+| last_name_read     | string  | null: false              |
 | birthday           | date    | null: false              |
 
 ### Association
@@ -26,6 +26,12 @@
 | -----------------| ---------- | ------------------------------ |
 | user             | references | null: false, foreign_key: true |
 | item_name        | string     | null: false                    |
+| description      | text       | null: false                    |
+| category_id      | integer    | null: false                    |
+| condition_id     | integer    | null: false                    |
+| postage_id       | integer    | null: false                    |
+| prefecture_id    | integer    | null: false                    |
+| shipping-day_id  | integer    | null: false                    |
 | price            | integer    | null: false                    |
 
 ### Association
@@ -55,7 +61,7 @@
 - belongs_to :user
 
 
-## shopping_addresses テーブル
+## shopping_addresses テーブル(配送先住所を保存するテーブル)
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
@@ -65,14 +71,14 @@
 | street        | string     | null: false                    |
 | building      | string     |                                |
 | phone         | string     | null: false                    |
-| orders        | references | null: false, foreign_key: true |
+| order         | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :order
 
 
-## orders テーブル
+## orders テーブル(購入記録を登録するテーブル)
 
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
@@ -83,4 +89,4 @@
 
 - belongs_to :item
 - belongs_to :user
-- has_one :shopping_addresses
+- belongs_to :shopping_addresses
