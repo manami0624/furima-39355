@@ -11,35 +11,32 @@
 | last_name          | string  | null: false              |
 | first_name_kana    | string  | null: false              |
 | last_name_kana     | string  | null: false              |
-| birthday           | integer | null: false              |
+| birthday           | date    | null: false              |
 
 ### Association
 
 - has_many :items
 - has_many :comments
-- has_one : card
 
 
 ## items テーブル
 
-| Column        | Type       | Options                        |
-| --------------| ---------- | ------------------------------ |
-| user_id       | string     | null: false                    |
-| item_name     | string     | null: false                    |
-| price         | integer    | null: false                    |
-| condition     | string     | null: false                    |
-| shipping_cost	| string     | null: false                    |
-| prefecture    | string     | null: false                    |
-| shipping_days	| integer    | null: false                    |
-| category_id   | references | null: false, foreign_key: true |
-| brand_id      | references | null: false, foreign_key: true |
-| image         | references | null: false, foreign_key: true |
+| Column           | Type       | Options                        |
+| -----------------| ---------- | ------------------------------ |
+| user             | references | null: false, foreign_key: true |
+| item_name        | string     | null: false                    |
+| price            | integer    | null: false                    |
+| condition_id     | integer    | null: false                    |
+| shipping_cost_id | integer    | null: false                    |
+| prefecture_id    | integer    | null: false                    |
+| shipping_days_id | integer    | null: false                    |
+| category_id      | integer    | null: false,                   |
+| brand_id         | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - has_many :comments
-- has_many : images
 - has_one :category
 - has_one :brand
 
@@ -80,25 +77,30 @@
 - belongs_to :user
 
 
-## card テーブル
+## destination テーブル
 
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| card_id | references | null: false, foreign_key: true |
-| user_id | references | null: false, foreign_key: true |
+| Column     | Type    | Options                      |
+| ---------- | ------- | ---------------------------- |
+| zip-code   | integer | null: false                  |
+| prefecture | string  | null: false                  |
+| city       | string  | null: false                  |
+| address    | string  | null: false                  |
+| building   | string  |                              |
+| tell       | integer | null: false                  |
 
 ### Association
 
 - belongs_to :user
 
 
-## images テーブル
+## shopping テーブル
 
-| Column  | Type       | Options                        |
-| ------- | ---------- | ------------------------------ |
-| image   | references | null: false, foreign_key: true |
-| item_id | references | null: false, foreign_key: true |
+| Column     | Type       | Options                        |
+| ---------- | ---------- | ------------------------------ |
+| user_id    | references | null: false, foreign_key: true |
+| item_id    | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :item
+- belongs_to :user
