@@ -17,6 +17,7 @@
 
 - has_many :items
 - has_many :comments
+- has_many :orders
 
 
 ## items テーブル
@@ -37,6 +38,7 @@
 
 - belongs_to :user
 - has_many :comments
+- has_many :orders
 - has_one :category
 - has_one :brand
 
@@ -77,7 +79,7 @@
 - belongs_to :user
 
 
-## destination テーブル
+## shopping-address テーブル
 
 | Column     | Type    | Options                      |
 | ---------- | ------- | ---------------------------- |
@@ -93,7 +95,7 @@
 - belongs_to :user
 
 
-## shopping テーブル
+## orders テーブル
 
 | Column     | Type       | Options                        |
 | ---------- | ---------- | ------------------------------ |
