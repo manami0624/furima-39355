@@ -64,4 +64,4 @@
 | item    | references | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :shopping_addresses
+- belongs_to :shopping_address
