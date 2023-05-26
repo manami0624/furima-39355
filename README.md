@@ -30,17 +30,17 @@
 | condition_id     | integer    | null: false                    |
 | shipping_cost_id | integer    | null: false                    |
 | prefecture_id    | integer    | null: false                    |
-| shipping_days_id | integer    | null: false                    |
-| category_id      | integer    | null: false,                   |
-| brand_id         | references | null: false, foreign_key: true |
+| shipping_day_id  | integer    | null: false                    |
+| category_id      | integer    | null: false                    |
+| brand_id         | integer    | null: false                    |
 
 ### Association
 
 - belongs_to :user
 - has_many :comments
 - has_many :orders
-- has_one :category
-- has_one :brand
+- has_one  :category
+- has_one  :brand
 
 ## category テーブル
 
@@ -67,11 +67,11 @@
 
 ## comments テーブル
 
-| Column     | Type       | Options                        |
-| ---------- | ---------- | ------------------------------ |
-| item_id    | references | null: false, foreign_key: true |
-| user_id    | references | null: false, foreign_key: true |
-| comment    | text       |                                |
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| item    | references | null: false, foreign_key: true |
+| user    | references | null: false, foreign_key: true |
+| comment | text       |                                |
 
 ### Association
 
@@ -79,30 +79,31 @@
 - belongs_to :user
 
 
-## shopping-address テーブル
+## shopping_addresses テーブル
 
-| Column     | Type    | Options                      |
-| ---------- | ------- | ---------------------------- |
-| zip-code   | integer | null: false                  |
-| prefecture | string  | null: false                  |
-| city       | string  | null: false                  |
-| address    | string  | null: false                  |
-| building   | string  |                              |
-| tell       | integer | null: false                  |
+| Column        | Type    | Options                      |
+| ------------- | ------- | ---------------------------- |
+| zipcode       | string  | null: false                  |
+| prefecture_id | integer | null: false                  |
+| city          | string  | null: false                  |
+| street        | string  | null: false                  |
+| building      | string  |                              |
+| phone         | string  | null: false                  |
 
 ### Association
 
-- belongs_to :user
+- belongs_to :orders
 
 
 ## orders テーブル
 
-| Column     | Type       | Options                        |
-| ---------- | ---------- | ------------------------------ |
-| user_id    | references | null: false, foreign_key: true |
-| item_id    | references | null: false, foreign_key: true |
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| user    | references | null: false, foreign_key: true |
+| item    | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :item
 - belongs_to :user
+- has_one :shopping_addresses
