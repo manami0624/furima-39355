@@ -8,4 +8,9 @@ class Item < ApplicationRecord
   validates :user, :item_name, :description, :category_id, :condition_id, :postage_id, :prefecture_id, :shipping_day_id, :price, presence: true
 
   validates :category_id, :condition_id, :postage_id, :prefecture_id, :shipping_day_id,  numericality: { other_than: 1 , message: "can't be blank"} 
+  validate :image_presence
+
+  def image_presence
+    errors.add(:image, "must be attached") unless image.attached?
+  end
 end
