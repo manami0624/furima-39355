@@ -63,6 +63,20 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Price can't be blank")
       end
+
+      it '価格は半角数値のみ保存可能である' do
+        @item.price = '１２３４５'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is invalid")
+      end
+      it '価格は、¥300~¥9,999,999の間のみ保存可能である' do
+        invalid_prices = [100, 10_000_000]
+        invalid_prices.each do |price|
+          @item.price = price
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Price is invalid")
+        end
+      end
     end
   end
 end
