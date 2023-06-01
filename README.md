@@ -30,7 +30,7 @@
 | condition_id     | integer    | null: false                    |
 | postage_id       | integer    | null: false                    |
 | prefecture_id    | integer    | null: false                    |
-| shipping-day_id  | integer    | null: false                    |
+| shipping_day_id  | integer    | null: false                    |
 | price            | integer    | null: false                    |
 
 ### Association
