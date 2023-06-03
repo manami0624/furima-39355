@@ -5,7 +5,7 @@ class OrderForm
   with_options presence: true do
     validates :zipcode, format: { with: /\A\d{3}[-]\d{4}\z/, message: 'input correctly' }
     validates :phone, format: { with: /\A\d{10,11}\z/, message: "input only number" }
-    validates :prefecture_id, :city, :street
+    validates :prefecture_id, :city, :street, :user_id, :item_id
   end
 
 
@@ -17,7 +17,9 @@ class OrderForm
         city: city,
         street: street,
         building: building,
-        phone: phone,)
+        phone: phone,
+        order_id: order.id
+        )
   end
 
 end

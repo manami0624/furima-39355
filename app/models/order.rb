@@ -1,3 +1,5 @@
 class Order < ApplicationRecord
-  belongs_to :shopping_address
+  has_one :shopping_address
+  belongs_to :item
+  belongs_to :user
 end

@@ -4,7 +4,6 @@ class OrdersController < ApplicationController
 
   def index
     if current_user.id != @item.user_id && @item.order == nil
-    @items = Item.all
     @order_form = OrderForm.new
     else
       redirect_to root_path
@@ -29,7 +28,7 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order_form).permit(:user_id, :item_id, :zipcode, :prefecture_id, :city, :street, :building, :phone)
+    params.require(:order_form).permit(:zipcode, :prefecture_id, :city, :street, :building, :phone).merge(user_id: current_user.id, item_id: params[:item_id])
   end
 
 end
