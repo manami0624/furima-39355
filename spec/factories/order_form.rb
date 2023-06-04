@@ -7,5 +7,6 @@ FactoryBot.define do
     phone          {"09012345678"}
     user_id { association :user }
     item_id { association :item}
+    token { "tok_XXXXXXXXXXXX" }
   end
 end

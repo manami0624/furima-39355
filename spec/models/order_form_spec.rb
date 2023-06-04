@@ -68,6 +68,12 @@ RSpec.describe OrderForm, type: :model do
         expect(@order_form.errors.full_messages).to include("Phone input only number")
       end
 
+      it 'クレジットカード情報は必須である' do
+        @order_form.token = nil
+        @order_form.valid?
+        expect(@order_form.errors.full_messages).to include("Token can't be blank")
+      end
+
     end
 
 end
