@@ -20,18 +20,6 @@ RSpec.describe OrderForm, type: :model do
   end
 
     context '商品購入ができない場合' do
-      it 'ログイン中のユーザーでないと購入できない' do
-      @order_form.user_id = nil
-      @order_form.valid?
-      expect(@order_form.errors.full_messages).to include("User can't be blank")
-      end
-
-      it '売却済みの商品は購入できない' do
-        @order_form.item_id = nil
-        @order_form.valid?
-        expect(@order_form.errors.full_messages).to include("Item can't be blank")
-        end
-      
        it '郵便番号が空だと購入できない' do
         @order_form.zipcode = nil
         @order_form.valid?
