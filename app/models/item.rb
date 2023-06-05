@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   has_one    :order
   has_one_attached :image
 
-  validates :image, :item_name, :description, :category_id, :condition_id, :postage_id, :prefecture_id, :shipping_day_id, :price, presence: true
+  validates :image, :item_name, :description, :category_id, :condition_id, :postage_id, :prefecture_id, :shipping_day_id, presence: true
 
   validates :category_id, :condition_id, :postage_id, :prefecture_id, :shipping_day_id,  numericality: { other_than: 1 , message: "can't be blank"} 
 

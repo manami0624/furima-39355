@@ -6,7 +6,7 @@ class OrderForm
     validates :zipcode, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: 'input correctly' }
     validates :phone, format: { with: /\A\d{10,11}\z/, message: 'input only number' }
     validates :prefecture_id,  numericality: { other_than: 1 , message: "can't be blank"} 
-    validates :prefecture_id, :city, :street, :user_id, :item_id, :token
+    validates :city, :street, :user_id, :item_id, :token
   end
 
 
