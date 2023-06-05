@@ -33,7 +33,7 @@ RSpec.describe OrderForm, type: :model do
       end
 
       it '郵便番号が半角ハイフンを含む形でなければ購入できない' do
-        @order_form.zipcode = '１２３４５６'
+        @order_form.zipcode = '１２３４５６７'
         @order_form.valid?
         expect(@order_form.errors.full_messages).to include("Zipcode input correctly")
       end
