@@ -24,4 +24,3 @@ class OrderForm
   end
 
 end
-
